@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INDEX / 001 — 소개</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Archivo:wght@400;600;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   EDITORIAL BRUTALISM — 흑백 + 형광 노랑 1색
+   고칠 내용은 전부 <script> 안 DATA 블록에 있음. CSS는 건드릴 필요 없음.
+   ========================================================================= */
+
+:root{
+  --ink:#0b0b0b;
+  --paper:#f4f2ed;
+  --acid:#e8ff3c;
+  --rule:#0b0b0b;
+  --serif:"Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
+  --sans:"Archivo","Pretendard","Apple SD Gothic Neo",-apple-system,sans-serif;
+  --mono:"JetBrains Mono","D2Coding",ui-monospace,monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--acid);color:var(--ink);}
+
+/* ---------- 상단 고정 바 ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 20px;
+  background:var(--ink);color:var(--paper);
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+}
+.topbar b{color:var(--acid);font-weight:700;}
+.topbar a{color:var(--paper);text-decoration:none;border-bottom:1px solid transparent;}
+.topbar a:hover{color:var(--acid);border-color:var(--acid);}
+.topbar .mid{display:none;}
+@media(min-width:720px){.topbar .mid{display:block;opacity:.6;}}
+
+/* ---------- 공통 ---------- */
+.wrap{max-width:1440px;margin:0 auto;padding:0 20px;}
+.rule{border-top:4px solid var(--rule);}
+.rule-thin{border-top:1px solid var(--rule);}
+
+.sec-label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  padding:10px 0;display:flex;gap:14px;align-items:baseline;
+}
+.sec-label .num{
+  background:var(--ink);color:var(--acid);
+  padding:2px 7px;font-weight:700;
+}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:42px;}
+.hero-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  padding:18px 0 10px;
+}
+.hero-type{padding:4px 0 0;}
+.line{
+  font-family:var(--serif);
+  font-weight:900;
+  line-height:.84;
+  letter-spacing:-.03em;
+  font-size:clamp(56px,15.5vw,230px);
+  display:block;
+  overflow:hidden;
+}
+.line > span{display:block;transform:translateY(102%);animation:rise .9s cubic-bezier(.16,1,.3,1) forwards;}
+.line:nth-child(2) > span{animation-delay:.09s;}
+.line:nth-child(3) > span{animation-delay:.18s;}
+@keyframes rise{to{transform:translateY(0);}}
+.line em{font-style:normal;background:var(--acid);padding:0 .06em;}
+.line .out{
+  color:transparent;
+  -webkit-text-stroke:2px var(--ink);
+}
+@media(min-width:900px){.line .out{-webkit-text-stroke:3px var(--ink);}}
+
+.hero-foot{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  padding:16px 0 22px;
+}
+@media(min-width:900px){
+  .hero-foot{grid-template-columns:1.1fr 1fr 1fr;gap:0;}
+  .hero-foot > div + div{border-left:1px solid var(--rule);padding-left:22px;}
+  .hero-foot > div{padding-right:22px;}
+}
+.hero-foot p{font-size:15px;line-height:1.65;max-width:42ch;}
+.hero-foot .k{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  opacity:.55;display:block;margin-bottom:8px;
+}
+
+/* ---------- 티커 ---------- */
+.ticker{
+  background:var(--ink);color:var(--paper);
+  overflow:hidden;white-space:nowrap;
+  padding:11px 0;
+  border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
+}
+.ticker-inner{display:inline-block;animation:slide 26s linear infinite;}
+.ticker span{
+  font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  padding:0 26px;
+}
+.ticker span i{color:var(--acid);font-style:normal;}
+@keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- 01 WHO ---------- */
+.who{display:grid;grid-template-columns:1fr;}
+@media(min-width:900px){
+  .who{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);}
+  .who > .col + .col{border-left:1px solid var(--rule);}
+}
+.col{padding:26px 0 36px;}
+@media(min-width:900px){
+  .who > .col:first-child{padding-right:46px;}
+  .who > .col:last-child{padding-left:46px;}
+}
+.statement{
+  font-family:var(--serif);
+  font-size:clamp(26px,3.9vw,52px);
+  line-height:1.26;
+  letter-spacing:-.02em;
+  font-weight:700;
+  margin-bottom:30px;
+}
+.statement mark{background:var(--acid);color:var(--ink);padding:0 .08em;}
+.body p{
+  font-size:16px;line-height:1.85;max-width:58ch;margin-bottom:17px;
+}
+.body p:last-child{margin-bottom:0;}
+
+/* 팩트 리스트 */
+.facts{border-top:1px solid var(--rule);}
+.fact{
+  display:grid;grid-template-columns:34px 1fr;
+  gap:14px;align-items:baseline;
+  padding:14px 0;border-bottom:1px solid var(--rule);
+  transition:background .18s,padding .18s;
+}
+.fact:hover{background:var(--acid);padding-left:10px;}
+.fact .n{font-family:var(--mono);font-size:11px;opacity:.5;}
+.fact .t{font-size:15px;line-height:1.55;}
+.fact .t b{font-weight:600;display:block;margin-bottom:2px;}
+.fact .t small{font-size:13px;opacity:.62;line-height:1.5;display:block;}
+
+/* 큰 숫자 */
+.nums{display:grid;grid-template-columns:repeat(2,1fr);margin-top:34px;border-top:4px solid var(--rule);}
+.num-cell{padding:18px 0 14px;border-bottom:1px solid var(--rule);}
+.num-cell:nth-child(odd){border-right:1px solid var(--rule);padding-right:16px;}
+.num-cell:nth-child(even){padding-left:16px;}
+.num-cell .v{font-family:var(--serif);font-weight:900;font-size:clamp(38px,6vw,76px);line-height:1;letter-spacing:-.04em;}
+.num-cell .l{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-top:7px;}
+
+/* ---------- 02 CONTACT ---------- */
+.contact{padding:22px 0 0;}
+.ch{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;
+  padding:22px 0;border-bottom:1px solid var(--rule);
+  text-decoration:none;color:var(--ink);position:relative;overflow:hidden;
+}
+.ch:first-of-type{border-top:4px solid var(--rule);}
+.ch .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:5px;display:block;}
+.ch .val{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(24px,5.2vw,58px);line-height:1;letter-spacing:-.02em;
+  word-break:break-all;
+}
+.ch .arw{font-family:var(--mono);font-size:22px;transition:transform .22s;}
+.ch:hover{background:var(--ink);color:var(--paper);padding-left:14px;}
+.ch:hover .val{color:var(--acid);}
+.ch:hover .arw{transform:translateX(8px);color:var(--acid);}
+.ch:hover .lbl{opacity:.75;}
+
+.copybar{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  padding:14px 0 0;opacity:.6;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  margin-top:54px;background:var(--ink);color:var(--paper);
+  padding:34px 0 26px;
+}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end;}
+footer .big{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(34px,9vw,130px);line-height:.86;letter-spacing:-.04em;
+  color:var(--paper);
+}
+footer .big u{text-decoration:none;color:var(--acid);}
+footer .meta{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.55;text-align:right;line-height:1.9;}
+
+/* ---------- 등장 모션 ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1);}
+.rv.in{opacity:1;transform:none;}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  .line > span{transform:none;}
+  .rv{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span id="tb-name">— / 001</span>
+  <span class="mid" id="tb-mid">AVAILABLE</span>
+  <a href="#contact">CONTACT ↓</a>
+</div>
+
+<main class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-top rule-thin" id="hero-top"></div>
+    <div class="hero-type" id="hero-type"></div>
+  </section>
+
+  <div class="hero-foot rule" id="hero-foot"></div>
+</main>
+
+<!-- ===== 티커 ===== -->
+<div class="ticker"><div class="ticker-inner" id="ticker"></div></div>
+
+<main class="wrap">
+
+  <!-- ===== 01 WHO ===== -->
+  <section id="who">
+    <div class="sec-label rule-thin"><span class="num">01</span><span>WHO / 소개</span></div>
+    <div class="who rule">
+      <div class="col rv">
+        <h2 class="statement" id="statement"></h2>
+        <div class="body" id="bio"></div>
+      </div>
+      <div class="col rv">
+        <div class="facts" id="facts"></div>
+        <div class="nums" id="nums"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 CONTACT ===== -->
+  <section id="contact">
+    <div class="sec-label rule-thin"><span class="num">02</span><span>CONTACT / 연락</span></div>
+    <div class="contact rv" id="channels"></div>
+    <div class="copybar" id="copybar"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big" id="foot-big"></div>
+    <div class="meta" id="foot-meta"></div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================================
+   ▼▼▼ 여기만 고치면 됨 — 아래 DATA 객체가 페이지 전체를 만든다 ▼▼▼
+   ※ "예시"라고 적힌 값은 전부 임시 플레이스홀더. 네 걸로 바꾸면 끝.
+   ========================================================================= */
+const DATA = {
+
+  /* --- 기본 --- */
+  name:      "문 지 훈",            // ← 예시. 네 이름
+  nameEn:    "MOON",                // ← 예시. 상단바/푸터용 영문 또는 이니셜
+  status:    "작업 의뢰 열려 있음",    // 상단 중앙 문구
+  year:      "2026",
+
+  /* --- 대문 타이포 (3줄 고정, 짧게 끊어 써야 힘이 산다) --- */
+  hero: [
+    { text: "하나로",  style: "plain"  },   // style: plain | mark(형광칠) | out(외곽선)
+    { text: "묶이지",  style: "mark"   },
+    { text: "않는다.", style: "out"    }
+  ],
+
+  /* --- 대문 하단 3칸 --- */
+  heroFoot: [
+    { k: "한 줄 소개",
+      v: "한 분야에 머무르지 않는다. 필요한 기술을 그때그때 익혀 결과물로 만든다." },   // ← 예시
+    { k: "현재",
+      v: "여러 분야를 동시에 진행 중. 기획부터 실행까지 혼자 처리한다." },              // ← 예시
+    { k: "위치 / 응답",
+      v: "대한민국 · 이메일 기준 24시간 내 회신" }                                   // ← 예시
+  ],
+
+  /* --- 흐르는 띠 문구 --- */
+  ticker: ["경계 없음", "직접 만든다", "기획 → 실행 → 완성", "2026", "연락 환영"],
+
+  /* --- 01 WHO --- */
+  statement: "한 가지로 설명되는 사람이 아니다. 그게 약점이 아니라 방식이다.",  // ← 예시
+  statementMark: 3,   // 앞에서 몇 단어까지 형광 칠할지 (0 = 칠하지 않음)
+  bio: [
+    "하나의 직함으로 정리되지 않는다. 관심이 가는 영역에 들어가서, 필요한 기술을 익히고, 끝까지 만들어 내보내는 방식으로 일해왔다.",  // ← 예시
+    "분야를 옮길 때마다 처음부터 배우는 건 비효율처럼 보인다. 하지만 서로 다른 영역이 겹치는 지점에서 나오는 결과물은 한 분야만 파온 사람이 만들기 어렵다. 그 지점을 노린다.",  // ← 예시
+    "설명보다 결과물이 빠르다. 궁금하면 연락하면 된다."  // ← 예시
+  ],
+
+  /* --- 오른쪽 팩트 리스트 --- */
+  facts: [
+    { t: "방식",   s: "기획·제작·마무리를 분리하지 않는다. 하나로 본다." },   // ← 예시
+    { t: "기준",   s: "완성되지 않은 건 결과물로 치지 않는다." },            // ← 예시
+    { t: "속도",   s: "배우는 데 시간을 쓰고, 만드는 데는 쓰지 않는다." },    // ← 예시
+    { t: "협업",   s: "말로 설명하기 전에 만들어서 보여준다." }              // ← 예시
+  ],
+
+  /* --- 큰 숫자 2~4개 (짝수 권장) --- */
+  nums: [
+    { v: "N",    l: "다루는 분야" },      // ← 예시
+    { v: "100%", l: "직접 제작" },        // ← 예시
+    { v: "24h",  l: "회신 속도" },        // ← 예시
+    { v: "2026", l: "현재 활동" }         // ← 예시
+  ],
+
+  /* --- 02 CONTACT --- */
+  channels: [
+    { lbl: "EMAIL",     val: "moonartcompany102@gmail.com", href: "mailto:moonartcompany102@gmail.com" },
+    { lbl: "INSTAGRAM", val: "@your_id",                    href: "https://instagram.com/your_id" }   // ← 예시. 핸들 교체
+  ],
+  copyNote: "이메일을 클릭하면 메일 앱이 열린다.",
+
+  footMeta: ["NO TEMPLATE", "BUILT 2026", "SEOUL, KR"]   // 푸터 오른쪽 작은 글씨
+};
+/* ▲▲▲ 여기까지만 고치면 됨 ▲▲▲ ========================================= */
+
+
+/* ---------- 렌더링 (아래는 건드릴 필요 없음) ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('tb-name').textContent = `${DATA.nameEn} / 001`;
+$('tb-mid').textContent  = DATA.status;
+
+$('hero-top').innerHTML =
+  `<span>${esc(DATA.name)}</span><span>${esc(DATA.year)} — INTRODUCTION</span>`;
+
+$('hero-type').innerHTML = DATA.hero.map(l => {
+  const inner = l.style === 'mark' ? `<em>${esc(l.text)}</em>`
+              : l.style === 'out'  ? `<span class="out">${esc(l.text)}</span>`
+              : esc(l.text);
+  return `<span class="line"><span>${inner}</span></span>`;
+}).join('');
+
+$('hero-foot').innerHTML = DATA.heroFoot.map(c =>
+  `<div><span class="k">${esc(c.k)}</span><p>${esc(c.v)}</p></div>`).join('');
+
+const tick = DATA.ticker.map(t => `<span>${esc(t)}<i> ✦</i></span>`).join('');
+$('ticker').innerHTML = tick + tick;
+
+$('statement').innerHTML = esc(DATA.statement).replace(/^(.{0,12}?[^ ]*)/, '<mark>$1</mark>');
+$('bio').innerHTML = DATA.bio.map(p => `<p>${esc(p)}</p>`).join('');
+
+$('facts').innerHTML = DATA.facts.map((f, i) =>
+  `<div class="fact"><span class="n">${String(i+1).padStart(2,'0')}</span>
+   <span class="t"><b>${esc(f.t)}</b><small>${esc(f.s)}</small></span></div>`).join('');
+
+$('nums').innerHTML = DATA.nums.map(n =>
+  `<div class="num-cell"><div class="v">${esc(n.v)}</div><div class="l">${esc(n.l)}</div></div>`).join('');
+
+$('channels').innerHTML = DATA.channels.map(c =>
+  `<a class="ch" href="${esc(c.href)}" target="_blank" rel="noopener">
+     <span><span class="lbl">${esc(c.lbl)}</span><span class="val">${esc(c.val)}</span></span>
+     <span class="arw">↗</span></a>`).join('');
+
+$('copybar').textContent = DATA.copyNote;
+$('foot-big').innerHTML  = `${esc(DATA.name)}<u>.</u>`;
+$('foot-meta').innerHTML = DATA.footMeta.map(esc).join('<br>');
+document.title = `${DATA.name} — 소개`;
+
+/* 스크롤 등장 */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
